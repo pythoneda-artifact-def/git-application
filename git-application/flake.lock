@@ -121,17 +121,17 @@
       },
       "locked": {
         "dir": "git-infrastructure",
-        "lastModified": 1692982264,
-        "narHash": "sha256-vyz28MMuFznog+LkyA1Nc2dJQVa5I19u8xWWrhridyE=",
+        "lastModified": 1692994433,
+        "narHash": "sha256-TGY+n4naeLATvE52u/wERalBoEtl16Fh+b9+lGebYN4=",
         "owner": "pythoneda-artifact",
         "repo": "git-infrastructure-artifact",
-        "rev": "80507b7be0a903ebb9556d549c3c352e46c1026d",
+        "rev": "14dd1754de07ba68817c7c10ca59f4cdd947b910",
         "type": "github"
       },
       "original": {
         "dir": "git-infrastructure",
         "owner": "pythoneda-artifact",
-        "ref": "0.0.1a2",
+        "ref": "0.0.1a5",
         "repo": "git-infrastructure-artifact",
         "type": "github"
       }

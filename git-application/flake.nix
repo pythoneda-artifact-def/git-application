@@ -44,7 +44,7 @@
     };
     pythoneda-artifact-git-infrastructure = {
       url =
-        "github:pythoneda-artifact/git-infrastructure-artifact/0.0.1a2?dir=git-infrastructure";
+        "github:pythoneda-artifact/git-infrastructure-artifact/0.0.1a5?dir=git-infrastructure";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-artifact-git.follows = "pythoneda-artifact-git";
@@ -378,7 +378,6 @@
               echo "echo 'Running ${org}/${repo}-${version} on Python ${python.version}'" >> $out/bin/${entrypoint}.sh
               echo "export PYTHONPATH=\"$(python ${pythoneda-shared-pythoneda-domain}/dist/scripts/process_pythonpath.py)\"" >> $out/bin/${entrypoint}.sh;
               echo "${python}/bin/python $out/lib/python${pythonMajorMinorVersion}/site-packages/${entrypoint-path} \$@" >> $out/bin/${entrypoint}.sh
-              echo "cat \$0" >> $out/bin/${entrypoint}.sh
               chmod +x $out/bin/${entrypoint}.sh
             '';
 
