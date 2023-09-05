@@ -35,13 +35,14 @@ pythoneda-shared-artifact-changes-shared = "^@pythonedaSharedArtifactChangesShar
 pythoneda-shared-code-requests-events = "^@pythonedaSharedCodeRequestsEvents@"
 pythoneda-shared-code-requests-events-infrastructure = "^@pythonedaSharedCodeRequestsEventsInfrastructure@"
 pythoneda-shared-code-requests-jupyter = "^@pythonedaSharedCodeRequestsJupyter@"
-pythoneda-shared-code-requests-nix-flake = "^@pythonedaSharedCodeRequestsNixFlake@"
 pythoneda-shared-code-requests-shared = "^@pythonedaSharedCodeRequestsShared@"
 pythoneda-shared-git-shared = "^@pythonedaSharedGitShared@"
+pythoneda-shared-nix-flake-shared = "^@pythonedaSharedNixFlakeShared@"
 pythoneda-shared-pythoneda-application = "^@pythonedaSharedPythonedaApplication@"
 pythoneda-shared-pythoneda-banner = "^@pythonedaSharedPythonedaBanner@"
 pythoneda-shared-pythoneda-domain = "^@pythonedaSharedPythonedaDomain@"
 pythoneda-shared-pythoneda-infrastructure = "^@pythonedaSharedPythonedaInfrastructure@"
+stringtemplate3 = "^@stringtemplate3@"
 
 [build-system]
 requires = ["poetry-core"]
