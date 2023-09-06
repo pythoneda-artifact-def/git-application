@@ -22,7 +22,7 @@
     nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
     pythoneda-artifact-git = {
-      url = "github:pythoneda-artifact/git-artifact/0.0.1a5?dir=git";
+      url = "github:pythoneda-artifact/git-artifact/0.0.1a6?dir=git";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-shared-artifact-changes-events.follows =
@@ -47,7 +47,7 @@
     };
     pythoneda-artifact-git-infrastructure = {
       url =
-        "github:pythoneda-artifact/git-infrastructure-artifact/0.0.1a6?dir=git-infrastructure";
+        "github:pythoneda-artifact/git-infrastructure-artifact/0.0.1a7?dir=git-infrastructure";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-artifact-git.follows = "pythoneda-artifact-git";
@@ -153,7 +153,7 @@
     };
     pythoneda-shared-code-requests-jupyter = {
       url =
-        "github:pythoneda-shared-code-requests/jupyter-artifact/0.0.1a8?dir=jupyter";
+        "github:pythoneda-shared-code-requests/jupyter-artifact/0.0.1a9?dir=jupyter";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-shared-code-requests-shared.follows =
@@ -188,7 +188,7 @@
     };
     pythoneda-shared-nix-flake-shared = {
       url =
-        "github:pythoneda-shared-nix-flake/shared-artifact/0.0.1a3?dir=shared";
+        "github:pythoneda-shared-nix-flake/shared-artifact/0.0.1a4?dir=shared";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-shared-git-shared.follows =
