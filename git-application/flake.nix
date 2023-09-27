@@ -216,7 +216,7 @@
         "pythoneda-shared-pythoneda-infrastructure";
     };
     pythoneda-shared-pythoneda-banner = {
-      url = "github:pythoneda-shared-pythoneda/banner/0.0.1a16";
+      url = "github:pythoneda-shared-pythoneda/banner/0.0.1a19";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
     };
@@ -256,7 +256,6 @@
         pythonpackage = builtins.replaceStrings [ "-" ] [ "." ] pname;
         package = builtins.replaceStrings [ "." ] [ "/" ] pythonpackage;
         entrypoint = "git_artifact_app";
-        entrypoint-path = "${package}/${entrypoint}.py";
         description = "Application layer of pythoneda-artifact/git";
         license = pkgs.lib.licenses.gpl3;
         homepage = "https://github.com/${org}/${repo}";
@@ -294,7 +293,7 @@
               "${pnameWithUnderscores}-${version}-py${pythonMajorVersion}-none-any.whl";
             banner_file = "${package}/git_artifact_banner.py";
             banner_class = "GitArtifactBanner";
-          in python.pkgs.buildPythonPackage rec {
+          in python.pkgs.buildPythonApplication rec {
             inherit pname version;
             projectDir = ./.;
             pyprojectTemplateFile = ./pyprojecttoml.template;
@@ -355,6 +354,21 @@
               nixpkgs_release = nixpkgsRelease;
               src = bannerTemplateFile;
             };
+            entrypointTemplateFile =
+              "${pythoneda-shared-pythoneda-banner}/templates/entrypoint.sh.template";
+            entrypointTemplate = pkgs.substituteAll {
+              arch_role = archRole;
+              hexagonal_layer = layer;
+              nixpkgs_release = nixpkgsRelease;
+              inherit homepage maintainers org python repo version;
+              pescio_space = space;
+              python_version = pythonMajorMinorVersion;
+              pythoneda_shared_pythoneda_banner =
+                pythoneda-shared-pythoneda-banner;
+              pythoneda_shared_pythoneda_domain =
+                pythoneda-shared-pythoneda-domain;
+              src = entrypointTemplateFile;
+            };
 
             format = "pyproject";
 
@@ -386,6 +400,14 @@
               chmod -R +w $sourceRoot
               cp ${pyprojectTemplate} $sourceRoot/pyproject.toml
               cp ${bannerTemplate} $sourceRoot/${banner_file}
+              cp ${entrypointTemplate} $sourceRoot/entrypoint.sh
+            '';
+
+            postPatch = ''
+              substituteInPlace /build/$sourceRoot/entrypoint.sh \
+                --replace "@SOURCE@" "$out/bin/${entrypoint}.sh" \
+                --replace "@PYTHONPATH@" "$PYTHONPATH" \
+                --replace "@ENTRYPOINT@" "$out/lib/python${pythonMajorMinorVersion}/site-packages/${package}/${entrypoint}.py"
             '';
 
             postInstall = ''
@@ -399,13 +421,7 @@
               mkdir $out/dist $out/bin
               cp dist/${wheelName} $out/dist
               jq ".url = \"$out/dist/${wheelName}\"" $out/lib/python${pythonMajorMinorVersion}/site-packages/${pnameWithUnderscores}-${version}.dist-info/direct_url.json > temp.json && mv temp.json $out/lib/python${pythonMajorMinorVersion}/site-packages/${pnameWithUnderscores}-${version}.dist-info/direct_url.json
-              chmod +x $out/lib/python${pythonMajorMinorVersion}/site-packages/${entrypoint-path}
-              export _PYTHONEDA_DEPS="$(echo $PYTHONPATH | sed 's : \n g' | wc -l)"
-              export _PYTHONEDA_PYTHONEDA_DEPS="$(echo $PYTHONPATH | sed 's : \n g' | grep 'pythoneda' | wc -l)"
-              echo '#!/usr/bin/env sh' > $out/bin/${entrypoint}.sh
-              echo "echo 'Running ${org}/${repo}-${version} on Python ${python.version}'" >> $out/bin/${entrypoint}.sh
-              echo "export PYTHONPATH=\"$(python ${pythoneda-shared-pythoneda-domain}/dist/scripts/process_pythonpath.py)\"" >> $out/bin/${entrypoint}.sh;
-              echo "${python}/bin/python $out/lib/python${pythonMajorMinorVersion}/site-packages/${entrypoint-path} \$@" >> $out/bin/${entrypoint}.sh
+              cp /build/$sourceRoot/entrypoint.sh $out/bin/${entrypoint}.sh
               chmod +x $out/bin/${entrypoint}.sh
             '';
 
