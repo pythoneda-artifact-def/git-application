@@ -29,20 +29,9 @@ packages = [{include = "@package@"}]
 python = "^@pythonMajorMinorVersion@"
 pythoneda-artifact-git = "^@pythonedaArtifactGit@"
 pythoneda-artifact-git-infrastructure = "^@pythonedaArtifactGitInfrastructure@"
-pythoneda-shared-artifact-changes-events = "^@pythonedaSharedArtifactChangesEvents@"
-pythoneda-shared-artifact-changes-events-infrastructure = "^@pythonedaSharedArtifactChangesEventsInfrastructure@"
-pythoneda-shared-artifact-changes-shared = "^@pythonedaSharedArtifactChangesShared@"
-pythoneda-shared-code-requests-events = "^@pythonedaSharedCodeRequestsEvents@"
-pythoneda-shared-code-requests-events-infrastructure = "^@pythonedaSharedCodeRequestsEventsInfrastructure@"
-pythoneda-shared-code-requests-jupyterlab = "^@pythonedaSharedCodeRequestsJupyterlab@"
-pythoneda-shared-code-requests-shared = "^@pythonedaSharedCodeRequestsShared@"
-pythoneda-shared-git-shared = "^@pythonedaSharedGitShared@"
-pythoneda-shared-nix-flake-shared = "^@pythonedaSharedNixFlakeShared@"
 pythoneda-shared-pythoneda-application = "^@pythonedaSharedPythonedaApplication@"
 pythoneda-shared-pythoneda-banner = "^@pythonedaSharedPythonedaBanner@"
 pythoneda-shared-pythoneda-domain = "^@pythonedaSharedPythonedaDomain@"
-pythoneda-shared-pythoneda-infrastructure = "^@pythonedaSharedPythonedaInfrastructure@"
-stringtemplate3 = "^@stringtemplate3@"
 
 [build-system]
 requires = ["poetry-core"]
