@@ -19,50 +19,49 @@
 {
   description = "Application layer of pythoneda-artifact/git";
   inputs = rec {
-    nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
+    nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
     pythoneda-artifact-git = {
-      url = "github:pythoneda-artifact/git-artifact/0.0.1a9?dir=git";
-      inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
+      inputs.nixos.follows = "nixos";
       inputs.pythoneda-shared-pythoneda-banner.follows =
         "pythoneda-shared-pythoneda-banner";
       inputs.pythoneda-shared-pythoneda-domain.follows =
         "pythoneda-shared-pythoneda-domain";
+      url = "github:pythoneda-artifact/git-artifact/0.0.2?dir=git";
     };
     pythoneda-artifact-git-infrastructure = {
-      url =
-        "github:pythoneda-artifact/git-infrastructure-artifact/0.0.1a11?dir=git-infrastructure";
-      inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
-      inputs.pythoneda-artifact-git.follows = "pythoneda-artifact-git";
+      inputs.nixos.follows = "nixos";
       inputs.pythoneda-shared-pythoneda-banner.follows =
         "pythoneda-shared-pythoneda-banner";
       inputs.pythoneda-shared-pythoneda-domain.follows =
         "pythoneda-shared-pythoneda-domain";
+      url =
+        "github:pythoneda-artifact/git-infrastructure-artifact/0.0.2?dir=git-infrastructure";
     };
     pythoneda-shared-pythoneda-application = {
-      url =
-        "github:pythoneda-shared-pythoneda/application-artifact/0.0.1a32?dir=application";
-      inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
+      inputs.nixos.follows = "nixos";
       inputs.pythoneda-shared-pythoneda-banner.follows =
         "pythoneda-shared-pythoneda-banner";
       inputs.pythoneda-shared-pythoneda-domain.follows =
         "pythoneda-shared-pythoneda-domain";
+      url =
+        "github:pythoneda-shared-pythoneda/application-artifact/0.0.2?dir=application";
     };
     pythoneda-shared-pythoneda-banner = {
-      url = "github:pythoneda-shared-pythoneda/banner/0.0.1a19";
-      inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
+      inputs.nixos.follows = "nixos";
+      url = "github:pythoneda-shared-pythoneda/banner/0.0.2";
     };
     pythoneda-shared-pythoneda-domain = {
-      url =
-        "github:pythoneda-shared-pythoneda/domain-artifact/0.0.1a43?dir=domain";
-      inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
+      inputs.nixos.follows = "nixos";
       inputs.pythoneda-shared-pythoneda-banner.follows =
         "pythoneda-shared-pythoneda-banner";
+      url =
+        "github:pythoneda-shared-pythoneda/domain-artifact/0.0.2?dir=domain";
     };
   };
   outputs = inputs:
@@ -71,7 +70,7 @@
       let
         org = "pythoneda-artifact";
         repo = "git-application";
-        version = "0.0.1a6";
+        version = "0.0.2";
         sha256 = "sha256-KbOZQrlVtTXaErpBhEFKPcloo3xY3VRDnqHT6rLCQSU=";
         pname = "${org}-${repo}";
         pythonpackage = builtins.replaceStrings [ "-" ] [ "." ] pname;
