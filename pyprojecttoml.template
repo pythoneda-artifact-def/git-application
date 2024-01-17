@@ -29,9 +29,9 @@ packages = [{include = "@package@"}]
 python = "^@pythonMajorMinorVersion@"
 pythoneda-artifact-git = "^@pythonedaArtifactGit@"
 pythoneda-artifact-git-infrastructure = "^@pythonedaArtifactGitInfrastructure@"
-pythoneda-shared-pythoneda-application = "^@pythonedaSharedPythonedaApplication@"
-pythoneda-shared-pythoneda-banner = "^@pythonedaSharedPythonedaBanner@"
-pythoneda-shared-pythoneda-domain = "^@pythonedaSharedPythonedaDomain@"
+pythoneda-shared-application = "^@pythonedaSharedApplication@"
+pythoneda-shared-banner = "^@pythonedaSharedBanner@"
+pythoneda-shared-domain = "^@pythonedaSharedDomain@"
 
 [build-system]
 requires = ["poetry-core"]
