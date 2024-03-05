@@ -28,7 +28,7 @@
         "pythoneda-shared-pythonlang-banner";
       inputs.pythoneda-shared-pythonlang-domain.follows =
         "pythoneda-shared-pythonlang-domain";
-      url = "github:pythoneda-artifact-def/git/0.0.38";
+      url = "github:pythoneda-artifact-def/git/0.0.39";
     };
     pythoneda-artifact-git-infrastructure = {
       inputs.flake-utils.follows = "flake-utils";
@@ -37,7 +37,7 @@
         "pythoneda-shared-pythonlang-banner";
       inputs.pythoneda-shared-pythonlang-domain.follows =
         "pythoneda-shared-pythonlang-domain";
-      url = "github:pythoneda-artifact-def/git-infrastructure/0.0.40";
+      url = "github:pythoneda-artifact-def/git-infrastructure/0.0.41";
     };
     pythoneda-shared-pythonlang-application = {
       inputs.flake-utils.follows = "flake-utils";
@@ -46,7 +46,7 @@
         "pythoneda-shared-pythonlang-banner";
       inputs.pythoneda-shared-pythonlang-domain.follows =
         "pythoneda-shared-pythonlang-domain";
-      url = "github:pythoneda-shared-pythonlang-def/application/0.0.58";
+      url = "github:pythoneda-shared-pythonlang-def/application/0.0.59";
     };
     pythoneda-shared-pythonlang-banner = {
       inputs.flake-utils.follows = "flake-utils";
@@ -58,7 +58,7 @@
       inputs.nixos.follows = "nixos";
       inputs.pythoneda-shared-pythonlang-banner.follows =
         "pythoneda-shared-pythonlang-banner";
-      url = "github:pythoneda-shared-pythonlang-def/domain/0.0.37";
+      url = "github:pythoneda-shared-pythonlang-def/domain/0.0.38";
     };
   };
   outputs = inputs:
@@ -152,8 +152,10 @@
               inherit homepage maintainers org python repo version;
               pescio_space = space;
               python_version = pythonMajorMinorVersion;
-              pythoneda_shared_banner = pythoneda-shared-pythonlang-banner;
-              pythoneda_shared_domain = pythoneda-shared-pythonlang-domain;
+              pythoneda_shared_pythonlang_banner =
+                pythoneda-shared-pythonlang-banner;
+              pythoneda_shared_pythonlang_domain =
+                pythoneda-shared-pythonlang-domain;
               src = entrypointTemplateFile;
             };
 
