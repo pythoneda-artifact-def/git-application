@@ -2186,16 +2186,16 @@
         "pythoneda-shared-pythonlang-infrastructure": "pythoneda-shared-pythonlang-infrastructure_2"
       },
       "locked": {
-        "lastModified": 1730230546,
-        "narHash": "sha256-AAPOfymKqDVQ7k0aBWw4nhZQhMzv00ZehLT2o7GQYr8=",
+        "lastModified": 1730271777,
+        "narHash": "sha256-yzumjoB9SUWRBhoc61B0thbEsDdpIGCPLXs7jGgQCmQ=",
         "owner": "pythoneda-shared-pythonlang-def",
         "repo": "application",
-        "rev": "5ee96339afc57ddabce09570ef1149dd1b9083b1",
+        "rev": "5d237fcbde1d84507dae2489bce2623964dabbd4",
         "type": "github"
       },
       "original": {
         "owner": "pythoneda-shared-pythonlang-def",
-        "ref": "0.0.67",
+        "ref": "0.0.68",
         "repo": "application",
         "type": "github"
       }
