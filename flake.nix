@@ -172,32 +172,29 @@
             # pythonImportsCheck = [ pythonpackage ];
 
             unpackPhase = ''
-              command cp -r ${src} .
-              sourceRoot=$(command ls | command grep -v env-vars)
-              command chmod -R +w $sourceRoot
-              command cp ${pyprojectToml} $sourceRoot/pyproject.toml
-              command cp ${bannerTemplate} $sourceRoot/${banner_file}
-              command cp ${entrypointTemplate} $sourceRoot/entrypoint.sh
+              command cp -r ${src}/* .
+              command chmod -R +w .
+              command cp ${pyprojectToml} ./pyproject.toml
+              command cp ${bannerTemplate} ./${banner_file}
+              command cp ${entrypointTemplate} ./entrypoint.sh
             '';
 
             postPatch = ''
-              substituteInPlace /build/$sourceRoot/entrypoint.sh \
+              substituteInPlace ./entrypoint.sh \
                 --replace "@SOURCE@" "$out/bin/${entrypoint}.sh" \
                 --replace "@PYTHONPATH@" "$PYTHONPATH" \
                 --replace "@ENTRYPOINT@" "$out/lib/python${pythonMajorMinorVersion}/site-packages/${package}/${entrypoint}.py"
             '';
 
             postInstall = with python.pkgs; ''
-              command pushd /build/$sourceRoot
               for f in $(command find . -name '__init__.py'); do
                 if [[ ! -e $out/lib/python${pythonMajorMinorVersion}/site-packages/$f ]]; then
                   command cp $f $out/lib/python${pythonMajorMinorVersion}/site-packages/$f;
                 fi
               done
-              command popd
               command mkdir -p $out/dist $out/bin $out/deps/flakes
               command cp dist/${wheelName} $out/dist
-              command cp /build/$sourceRoot/entrypoint.sh $out/bin/${entrypoint}.sh
+              command cp ./entrypoint.sh $out/bin/${entrypoint}.sh
               command chmod +x $out/bin/${entrypoint}.sh
               for dep in ${pythoneda-artifact-git} ${pythoneda-artifact-git-infrastructure} ${pythoneda-shared-pythonlang-application} ${pythoneda-shared-pythonlang-banner} ${pythoneda-shared-pythonlang-domain}; do
                 command cp -r $dep/dist/* $out/deps || true
